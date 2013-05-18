@@ -5,27 +5,36 @@ var def = {
 
 function mapRender(position) {
 
+	var user_latlng =  new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var mapOptions = {
-		center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+		center: user_latlng,
 		zoom: 15,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+	new google.maps.Marker({
+		position: user_latlng, 
+		map: map, 
+		title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
+	});
 }
 
 function error(msg) {
-	console.log("fuck fuck fuck");
+	console.log(msg);
+	var position = {
+		coords: {
+			latitude: def.lat,
+			longitude: def. lng
+		},
+		noloc: true
+	};
+	mapRender(position);
 }
 
 if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(mapRender, error);
 } else {
-	var position = {
-		coords: {
-			latitude: def.lat,
-			longitude: def. lng
-		}
-	};
-	mapRender(position);
+	error("not supported on this browser");
 }
