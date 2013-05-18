@@ -4,17 +4,14 @@ var def = {
 };
 
 function mapRender(position) {
-	
-	google.maps.event.addDomListener(window, 'load', initMap);
-	function initMap() {
-		var mapOptions = {
-			center: new google.maps.LatLng(def.lat, def.lng),
-			zoom: 15,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
 
-		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-	}
+	var mapOptions = {
+		center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+		zoom: 15,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+
+	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 }
 
 function error(msg) {
@@ -24,5 +21,11 @@ function error(msg) {
 if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(mapRender, error);
 } else {
-	error('not supported');
+	var position = {
+		coords: {
+			latitude: def.lat,
+			longitude: def. lng
+		}
+	};
+	mapRender(position);
 }
