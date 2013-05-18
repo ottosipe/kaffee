@@ -1,4 +1,9 @@
 kaffee
 ======
 
-Angel Hack 2013
+to run:
+
+- clone
+- `virtualenv venv --distribute`
+- `source venv/bin/activate`
+- `pip install -r requirements.txt`
