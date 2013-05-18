@@ -1,5 +1,8 @@
 # Django settings for kaffee project.
 
+import os
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -29,7 +32,7 @@ ALLOWED_HOSTS = []
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Los_Angeles'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -61,14 +64,14 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT =  os.path.join(PROJECT_ROOT, 'static').replace('\\','/')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
+STATICFILES_DIRS = (    
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -87,9 +90,11 @@ SECRET_KEY = 'l@k%l=#t)doxrp1qu6nf@48(!o9tqleqn_gfn3adr-c8&n6yaw'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    ('pyjade.ext.django.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+        #'django.template.loaders.eggs.Loader',
+    )),
 )
 
 MIDDLEWARE_CLASSES = (
@@ -108,6 +113,7 @@ ROOT_URLCONF = 'kaffee.urls'
 WSGI_APPLICATION = 'kaffee.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT, 'views').replace('\\','/'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
