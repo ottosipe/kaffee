@@ -63,10 +63,10 @@ function mapRender(position) {
 	var mapOptions = {
 		disableDefaultUI: true,
 		center: user_latlng,
-		zoom: 16,
+		zoom: 15,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
-    maxZoom: 18,
-    minZoom: 16
+    maxZoom: 17,
+    minZoom: 15
 	};
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);

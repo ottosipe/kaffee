@@ -16,11 +16,12 @@ def data(request):
     client = foursquare.Foursquare(client_id=config.client_id, client_secret=config.client_secret)
 
     ll = str(lat) + ',' + str(lng)
-    results = client.venues.explore(params={
+    results = client.venues.search(params={
 	    								'll':ll, 
 	    								'query' : search, 
 	    								'radius' : radius,
-	    								'limit' : 50
+	    								'limit' : 50,
+	    								'intent' : "browse"
     								})
     
     output = json.dumps(results, sort_keys=True, indent=4, separators=(',', ': '))

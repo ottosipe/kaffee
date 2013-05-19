@@ -11,9 +11,10 @@ window.drawCircles = function draw(map, center) {
   }, function(data) {
     // parse json and grab data
     var venues = JSON.parse(data).venues;
-                  
+    console.log(data);             
 
                                                                   // TODO, dont replot things.... just dont re render redoundant stuff.
+                                                                  // also, query four corners of map too on pg load
     for(var i in circles) {
       circles[i].setMap(null);
     }
