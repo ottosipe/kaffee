@@ -13,7 +13,7 @@ body {
 }
 
 #container {
-	height: 150px;
+	height: 90px;
 	width: 220px;
 	background-color: white;
 	position: absolute;
@@ -33,3 +33,13 @@ body {
 	margin-right: auto;
 	margin-left: auto;
 }
+
+#logo {
+	width: 220px;
+	position: absolute;
+	margin: 20px 20px 20px 20px;
+	z-index: 10000;
+}
+
+
+
