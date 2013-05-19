@@ -73,8 +73,9 @@ function mapRender(position) {
 
   var t_recenter = _.throttle(recenter, 3000);
   function recenter() {
-    window.drawCircles(map, map.getCenter());
+    window.drawCircles(map);
   }
+  
   google.maps.event.addListener(map, 'center_changed', function() {
     // call throttled recenter function
     t_recenter();
@@ -86,11 +87,9 @@ function mapRender(position) {
 		title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
 	});
 
-  console.log(user_latlng)
-
 	map.setOptions({styles: styles});
 
-	window.drawCircles(map, map.getCenter());
+	window.drawCircles(map);
 }
 
 function error(msg) {
