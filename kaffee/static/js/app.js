@@ -50,6 +50,18 @@ var styles = [
     "stylers": [
       { "visibility": "off" }
     ]
+  }, {
+    "featureType": "poi",
+    "elementType": "all",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  }, {
+    "featureType": "road",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "on" }
+    ]
   }
 ];
 
