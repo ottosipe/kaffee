@@ -80,9 +80,10 @@ window.renderCircle = function render(map, lat, lng) {
 
         circles.push(new google.maps.Circle(circleOpts));
         var centerMarker = {
-           map: map,
-           position: new google.maps.LatLng(venues[i].location.lat, venues[i].location.lng),
-           title: venues[i].name
+          icon: '/static/img/grey-dot-small.png',
+          map: map,
+          position: new google.maps.LatLng(venues[i].location.lat, venues[i].location.lng),
+          title: venues[i].name
         };
         circles.push(new google.maps.Marker(centerMarker));
 
