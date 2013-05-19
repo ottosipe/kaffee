@@ -1,15 +1,21 @@
 from django.http import HttpResponse
 import json
 import foursquare
+import json
+import config
 
 def data(request):
     lat = request.GET.get('lat', 0)
     lng = request.GET.get('lng', 0)
     radius = request.GET.get('radius', 0)
+
     if (not lat or not lng or not radius): 
         return HttpResponse("Shit is Fucked")
-
-    client = foursquare.Foursquare(client_id='51747628')
-    ll = str(lat) + ',' + str(lng)
-    results = client.venues.search(params={'ll':ll, 'query' : 'coffee', 'radius' : radius})
     
+    client = foursquare.Foursquare(client_id=config.client_id, client_secret=config.client_secret)
+
+    ll = str(lat) + ',' + str(lng)
+    results = client.venues.search(params={'ll':ll, 'query' : '', 'radius' : radius})
+    
+    output = json.dumps(results, sort_keys=True, indent=4, separators=(',', ': '))
+    return HttpResponse(output )

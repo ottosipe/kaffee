@@ -7,6 +7,7 @@ function mapRender(position) {
 
 	var user_latlng =  new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var mapOptions = {
+		disableDefaultUI: true,
 		center: user_latlng,
 		zoom: 15,
 		mapTypeId: google.maps.MapTypeId.ROADMAP

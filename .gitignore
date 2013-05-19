@@ -37,3 +37,5 @@ nosetests.xml
 # extra stuff
 venv
 *.pyc
+.DS_Store
+kaffee/config.py
