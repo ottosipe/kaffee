@@ -1,23 +1,25 @@
 
 
 var circles = [];
+
+window.clearCircles = function clear() {
+  for(var i in circles) {
+      circles[i].setMap(null);
+    }
+}
+
 window.drawCircles = function draw(map, center) {
 
   $.get("data", {
     lat: center.jb,
     lng: center.kb,
     radius: 800,
-    search: "coffee" // switch to search from box
+    search: window.query // switch to search from box
   }, function(data) {
     // parse json and grab data
     var venues = JSON.parse(data).venues;
-    console.log(data);             
-
-                                                                  // TODO, dont replot things.... just dont re render redoundant stuff.
-                                                                  // also, query four corners of map too on pg load
-    for(var i in circles) {
-      circles[i].setMap(null);
-    }
+       
+    window.clearCircles();
 
     for (var i in venues) {
       console.log(venues[i].name)
