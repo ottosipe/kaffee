@@ -3,17 +3,6 @@ import json
 import foursquare
 import json
 import config
-import datetime
-from mongoengine import *
-
-connect('kaffee', host='dharma.mongohq.com', port=10009, username='kaffee', password=config.db_password)
-
-class Venue(Document):
-    name = StringField(required=True, max_length=200)
-    score = IntField(required=True)
-    lat = FloatField(required=True)
-    lng = FloatField(required=True)
-    time = DateTimeField(default=datetime.datetime.now)
 
 def data(request):
     lat = request.GET.get('lat', 0)
