@@ -30,8 +30,8 @@ var styles = [
     "featureType": "water",
     "stylers": [
       { "visibility": "on" },
-      { "saturation": 39 },
-      { "lightness": -27 }
+      { "saturation": 19 },
+      { "lightness": -7 }
     ]
   },{
     "featureType": "water",
@@ -47,22 +47,38 @@ var styles = [
   }
 ];
 
-var def = {
+window.userLoc = {
 	lat: 47.6074,
 	lng: -122.3210
 };
 
+google.maps.visualRefresh = true;
+
 function mapRender(position) {
 
-	var user_latlng =  new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  userLoc.lat = position.coords.latitude;
+  userLoc.lng = position.coords.longitude;
+
+	var user_latlng =  new google.maps.LatLng(userLoc.lat, userLoc.lng);
 	var mapOptions = {
 		disableDefaultUI: true,
 		center: user_latlng,
 		zoom: 15,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+    maxZoom: 17,
+    minZoom: 15
 	};
 
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+  var t_recenter = _.throttle(recenter, 3000);
+  function recenter() {
+    window.drawCircles(map, map.getCenter());
+  }
+  google.maps.event.addListener(map, 'center_changed', function() {
+    // call throttled recenter function
+    t_recenter();
+  });
 
 	new google.maps.Marker({
 		position: user_latlng, 
@@ -72,15 +88,15 @@ function mapRender(position) {
 
 	map.setOptions({styles: styles});
 
-	window.drawCircles(map);
+	window.drawCircles(map, map.getCenter());
 }
 
 function error(msg) {
 	console.log(msg);
 	var position = {
 		coords: {
-			latitude: def.lat,
-			longitude: def. lng
+			latitude: userLoc.lat,
+			longitude: userLoc.lng
 		},
 		noloc: true
 	};
