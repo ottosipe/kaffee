@@ -98,6 +98,7 @@ function mapRender(position) {
   });
 
 	new google.maps.Marker({
+    icon: '/static/img/person_icon.png',
 		position: user_latlng, 
 		map: map, 
 		title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
