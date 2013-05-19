@@ -39,6 +39,7 @@ var i = 0;
 window.setColor = function color() {
   // thanks paul irish!
 
+  last_center = {lat: 0, lng: 0}
   if(i >= colorList.length) i = 0;
   window.color = colorList[i++];
 }
