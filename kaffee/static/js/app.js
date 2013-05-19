@@ -44,6 +44,12 @@ var styles = [
     "stylers": [
       { "visibility": "off" }
     ]
+  }, {
+    "featureType": "all",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
   }
 ];
 
