@@ -4,10 +4,24 @@ html
     meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
     link(rel='stylesheet', href='/static/css/style.css')
     link(rel='stylesheet', type='text/css', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css')
-    script(src="http://code.jquery.com/jquery-1.9.1.min.js")
+    link(rel='stylesheet', href='http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css')
+    script(src='http://code.jquery.com/jquery-1.9.1.min.js')
     script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=#{api_key}&sensor=false')
-    script(type='text/javascript', src="/static/js/circle.js")
+    script(src='http://code.jquery.com/ui/1.10.3/jquery-ui.js')
+    script(type='text/javascript', src='/static/js/circle.js')
     script(type='text/javascript', src="/static/js/app.js")
+
       
   body
+    
+    
+    #container
+        form(action='',method='get')
+            label(for='query') Business Type
+            input#query(type='text',placeholder='coffee, cupcakes, ...', name='query')
+            label(for='query') Distance
+            #slider
+            script
+                $( "#slider" ).slider();
+            button.button#button go
     #map-canvas
