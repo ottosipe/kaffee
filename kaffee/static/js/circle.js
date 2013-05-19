@@ -12,7 +12,7 @@ window.drawCircles = function draw(map) {
   dist = Math.sqrt(Math.pow(center.jb - last_center.lat,2) + Math.pow(center.kb - last_center.lng,2));
   console.log(dist);
 
-  if(dist < .003) return;
+  if(dist < .004) return;
 
   window.renderCircle(map, center.jb, center.kb);
   window.renderCircle(map, center.jb + .005, center.kb + .015);
