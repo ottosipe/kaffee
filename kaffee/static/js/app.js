@@ -53,6 +53,7 @@ $(function() {
   $("#search_form").submit(function(e) {
     e.preventDefault();
     window.query = $("#query").val();
+    window.clearCircles();
     console.log(window.query)
   })
 })
