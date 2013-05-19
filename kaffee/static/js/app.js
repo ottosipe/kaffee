@@ -1,3 +1,52 @@
+var styles = [
+  {
+    "featureType": "poi",
+    "elementType": "labels.icon",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "elementType": "labels.text.fill",
+    "stylers": [
+      { "color": "#808080" }
+    ]
+  },{
+    "featureType": "road",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "transit",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "water",
+    "stylers": [
+      { "visibility": "on" },
+      { "saturation": 39 },
+      { "lightness": -27 }
+    ]
+  },{
+    "featureType": "water",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "administrative.neighborhood",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  }
+];
+
 var def = {
 	lat: 47.6074,
 	lng: -122.3210
@@ -19,6 +68,8 @@ function mapRender(position) {
 		map: map, 
 		title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
 	});
+
+	map.setOptions({styles: styles});
 
 	window.drawCircles(map);
 }
