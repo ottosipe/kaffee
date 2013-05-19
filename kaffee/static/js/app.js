@@ -19,6 +19,8 @@ function mapRender(position) {
 		map: map, 
 		title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
 	});
+
+	window.drawCircles(map);
 }
 
 function error(msg) {
