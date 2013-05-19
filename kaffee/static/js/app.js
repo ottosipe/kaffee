@@ -78,7 +78,9 @@ $(function() {
     e.preventDefault();
     window.query = $("#query").val();
 
-    window.setColor()
+    if (window.query == "") return;
+
+    window.setColor();
     window.drawCircles(window.map);
   })
 })
@@ -127,7 +129,6 @@ function mapRender(position) {
 
 	map.setOptions({styles: styles});
 
-	window.drawCircles(map);
 }
 
 function error(msg) {
