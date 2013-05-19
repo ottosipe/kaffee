@@ -52,7 +52,8 @@ window.query = "coffee";
 $(function() {
   $("#search_form").submit(function(e) {
     e.preventDefault();
-    console.log($("#query").val())
+    window.query = $("#query").val();
+    console.log(window.query)
   })
 })
 
