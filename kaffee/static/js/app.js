@@ -86,6 +86,8 @@ function mapRender(position) {
 		title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
 	});
 
+  console.log(user_latlng)
+
 	map.setOptions({styles: styles});
 
 	window.drawCircles(map, map.getCenter());
