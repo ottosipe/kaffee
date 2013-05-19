@@ -1,4 +1,5 @@
 
+var colorList = ["#FF0000", "#5CB8FF", "#790EAD", "#009933", "#0000FF", "#FF4719", "#FF47D1"];
 
 var circles = [];
 
