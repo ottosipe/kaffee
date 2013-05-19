@@ -5,6 +5,16 @@ var circles = [];
 
 var last_center = {lat: 0, lng: 0}
 
+window.clearCircles = function clear() {
+  for(var i in circles) {
+    circles[i].setMap(null);
+  }
+
+  last_center = {lat: 0, lng: 0}
+  circles_set = {}
+  circles = [];
+}
+
 window.drawCircles = function draw(map) {
   
   var center = map.getCenter();
@@ -31,20 +41,16 @@ window.renderCircle = function render(map, lat, lng) {
     lat: lat,
     lng: lng,
     radius: 800,
-    search: "coffee" // switch to search from box
+    search: window.query // switch to search from box
   }, function(data) {
     // parse json and grab data
     var venues = JSON.parse(data).venues;
 
-                                                                  // TODO, dont replot things.... just dont re render redoundant stuff.
-                                                                  // also, query four corners of map too on pg load
-
-
-    new google.maps.Marker({
+/*    new google.maps.Marker({
       position: new google.maps.LatLng(lat, lng), 
       map: map
     });
-
+*/
     for (var i in venues) {
       var hash = venues[i].name + venues[i].location.lat + venues[i].location.lng;
 

@@ -47,6 +47,18 @@ var styles = [
   }
 ];
 
+window.
+window.query = "coffee";
+$(function() {
+  $("#search_form").submit(function(e) {
+    e.preventDefault();
+    window.query = $("#query").val();
+    window.clearCircles();
+    console.log(window.query)
+  })
+})
+
+
 window.userLoc = {
 	lat: 47.6074,
 	lng: -122.3210
