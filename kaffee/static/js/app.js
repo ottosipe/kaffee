@@ -50,6 +50,18 @@ var styles = [
     "stylers": [
       { "visibility": "off" }
     ]
+  }, {
+    "featureType": "poi",
+    "elementType": "all",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  }, {
+    "featureType": "road",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "on" }
+    ]
   }
 ];
 
@@ -57,13 +69,16 @@ window.
 window.query = "coffee";
 $(function() {
 
+
+  $("#clear").click(function(e){
+    e.preventDefault();
+    window.clearCircles();
+  })
   $("#search_form").submit(function(e) {
     e.preventDefault();
     window.query = $("#query").val();
 
     window.setColor()
-
-    //window.clearCircles();
     window.drawCircles(window.map);
   })
 })
