@@ -11,8 +11,7 @@ connect('kaffee', host='dharma.mongohq.com', port=10009, username='kaffee', pass
 class Venue(Document):
     name = StringField(required=True, max_length=200)
     score = IntField(required=True)
-    lat = FloatField(required=True)
-    lng = FloatField(required=True)
+    pos = GeoPointField(required=True)
     time = DateTimeField(default=datetime.datetime.now)
 
 def data(request):
@@ -37,3 +36,6 @@ def data(request):
     
     output = json.dumps(results, sort_keys=True, indent=4, separators=(',', ': '))
     return HttpResponse(output )
+
+def data(lat, lng, radius):
+    position = Location(point=[lat, lng])
