@@ -1,4 +1,5 @@
 
+var colorList = ["#FF0000", "#5CB8FF", "#790EAD", "#009933", "#0000FF", "#FF4719", "#FF47D1"];
 
 var circles_set = {};
 var circles = [];
@@ -78,18 +79,13 @@ window.renderCircle = function render(map, lat, lng) {
         };
 
         circles.push(new google.maps.Circle(circleOpts));
-        var centerCircle = {
-           clickable: false,
-           strokeColor: '#000000',
-           strokeOpacity: 1,
-           strokeWeight: 0,
-           fillColor: '#000000',
-           fillOpacity: 1,
+        var centerMarker = {
            map: map,
-           center: new google.maps.LatLng(venues[i].location.lat, venues[i].location.lng),
-           radius: 3
+           position: new google.maps.LatLng(venues[i].location.lat, venues[i].location.lng),
+           title: venues[i].name
         };
-        circles.push(new google.maps.Circle(centerCircle));
+        circles.push(new google.maps.Marker(centerMarker));
+
         circles_set[hash] = true;
       }
     }
