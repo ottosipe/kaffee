@@ -69,11 +69,11 @@ window.
 window.query = "coffee";
 $(function() {
 
-
   $("#clear").click(function(e){
     e.preventDefault();
     window.clearCircles();
   })
+
   $("#search_form").submit(function(e) {
     e.preventDefault();
     window.query = $("#query").val();
