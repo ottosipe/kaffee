@@ -39,7 +39,7 @@ var i = 0;
 window.setColor = function color() {
   // thanks paul irish!
 
-  last_center = {lat: 0, lng: 0}
+  last_center = {lat: 0, lng: 0};
   if(i >= colorList.length) i = 0;
   window.color = colorList[i++];
 }
@@ -47,6 +47,7 @@ window.setColor = function color() {
 setColor();
 window.renderCircle = function render(map, lat, lng) {
 
+  if (window.query == "") return;
 
   $.get("data", {
     lat: lat,

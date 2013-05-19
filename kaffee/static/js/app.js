@@ -65,13 +65,13 @@ var styles = [
   }
 ];
 
-window.
-window.query = "coffee";
+window.query = "";
 $(function() {
 
   $("#clear").click(function(e){
     e.preventDefault();
     window.clearCircles();
+    $("#query").val("");
   })
 
   $("#search_form").submit(function(e) {
@@ -115,7 +115,7 @@ function mapRender(position) {
     window.drawCircles(map);
   }
   
-  google.maps.event.addListener(map, 'center_changed', function() {
+  google.maps.event.addListener(map, 'dragend', function() {
     // call throttled recenter function
     t_recenter();
   });
