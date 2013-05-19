@@ -50,11 +50,15 @@ var styles = [
 window.
 window.query = "coffee";
 $(function() {
+
   $("#search_form").submit(function(e) {
     e.preventDefault();
     window.query = $("#query").val();
-    window.clearCircles();
-    console.log(window.query)
+
+    window.setColor()
+
+    //window.clearCircles();
+    window.drawCircles(window.map);
   })
 })
 
@@ -81,7 +85,7 @@ function mapRender(position) {
     minZoom: 15
 	};
 
-	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	window.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
   var t_recenter = _.throttle(recenter, 3000);
   function recenter() {

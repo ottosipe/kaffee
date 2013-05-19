@@ -34,6 +34,15 @@ window.drawCircles = function draw(map) {
   last_center.lng = center.kb;
 }
 
+window.setColor = function color() {
+  // thanks paul irish!
+
+  window.color = '#' + (function co(lor){   return (lor +=
+  [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'][Math.floor(Math.random()*16)])
+  && (lor.length == 6) ?  lor : co(lor); })('');
+}
+
+setColor();
 window.renderCircle = function render(map, lat, lng) {
 
 
@@ -50,7 +59,7 @@ window.renderCircle = function render(map, lat, lng) {
       position: new google.maps.LatLng(lat, lng), 
       map: map
     });
-*/
+*/  
     for (var i in venues) {
       var hash = venues[i].name + venues[i].location.lat + venues[i].location.lng;
 
@@ -58,10 +67,10 @@ window.renderCircle = function render(map, lat, lng) {
 
         var circleOpts = {
           clickable: false,
-          strokeColor: '#FF0000',
+          strokeColor: window.color,
           strokeOpacity: 0.8,
           strokeWeight: 0,
-          fillColor: '#FF0000',
+          fillColor: window.color,
           fillOpacity: 0.35,
           map: map,
           center: new google.maps.LatLng(venues[i].location.lat,venues[i].location.lng),
