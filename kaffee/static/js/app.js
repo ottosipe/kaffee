@@ -95,9 +95,11 @@ google.maps.visualRefresh = true;
 
 function mapRender(position) {
 
-  userLoc.lat = position.coords.latitude;
-  userLoc.lng = position.coords.longitude;
-
+  if(position) {
+    userLoc.lat = position.coords.latitude;
+    userLoc.lng = position.coords.longitude;
+  }
+  
 	var user_latlng =  new google.maps.LatLng(userLoc.lat, userLoc.lng);
 	var mapOptions = {
 		disableDefaultUI: true,

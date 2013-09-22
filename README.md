@@ -8,4 +8,4 @@ to setup:
 
 to run: 
 - `foreman start`
-- gram some coffee
+- grab some coffee

@@ -1,5 +1,5 @@
 
-var colorList = ["#FF0000", "#5CB8FF", "#790EAD", "#009933", "#0000FF", "#FF4719", "#FF47D1"];
+var colorList = ["#5CB8FF", "#790EAD", "#009933", "#0000FF", "#FF4719", "#FF47D1"];
 
 var circles_set = {};
 var circles = [];
@@ -20,22 +20,21 @@ window.drawCircles = function draw(map) {
   
   var center = map.getCenter();
 
-  dist = Math.sqrt(Math.pow(center.jb - last_center.lat,2) + Math.pow(center.kb - last_center.lng,2));
-  console.log(dist);
+  dist = Math.sqrt(Math.pow(center.lat() - last_center.lat,2) + Math.pow(center.lng() - last_center.lng,2));
 
   if(dist < .004) return;
 
-  window.renderCircle(map, center.jb, center.kb);
-  window.renderCircle(map, center.jb + .005, center.kb + .015);
-  window.renderCircle(map, center.jb + .005, center.kb - .015);
-  window.renderCircle(map, center.jb - .005, center.kb + .015);
-  window.renderCircle(map, center.jb - .005, center.kb - .015);
+  window.renderCircle(map, center.lat(), center.lng());
+  window.renderCircle(map, center.lat() + .005, center.lng() + .015);
+  window.renderCircle(map, center.lat() + .005, center.lng() - .015);
+  window.renderCircle(map, center.lat() - .005, center.lng() + .015);
+  window.renderCircle(map, center.lat() - .005, center.lng() - .015);
 
-  last_center.lat = center.jb;
-  last_center.lng = center.kb;
+  last_center.lat = center.lat();
+  last_center.lng = center.lng();
 }
 
-var i = 0;
+var i = Math.random()*10;
 window.setColor = function color() {
   // thanks paul irish!
 
@@ -54,7 +53,8 @@ window.renderCircle = function render(map, lat, lng) {
     lng: lng,
     radius: 800,
     search: window.query // switch to search from box
-  }, function(data) {
+  }, function(data, err) {
+
     // parse json and grab data
     var venues = JSON.parse(data).venues;
 

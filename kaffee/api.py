@@ -9,9 +9,9 @@ def data(request):
     lng = request.GET.get('lng', 0)
     radius = request.GET.get('radius', 0)
     search = request.GET.get('search', 'coffee');
-    print search
+    
     if (not lat or not lng or not radius): 
-        return HttpResponse("Shit is Fucked")
+        raise Http404
     
     client = foursquare.Foursquare(client_id=config.client_id, client_secret=config.client_secret)
 
